@@ -3,6 +3,7 @@ import { Header } from './components/Header'
 import { Main } from './components/Main'
 import { Footer } from './components/Footer'
 import { useEffect, useState } from 'react'
+import { render } from '@testing-library/react'
 
 function App() {
   let [todos, setTodos] = useState([])
@@ -37,6 +38,12 @@ function App() {
   const clearAllCompletedItems = () => {
     todos = todos.filter((currentTodo) => !currentTodo.completed)
     console.log(todos)
+    // console.log(todos)
+    if (todos.length == 0) {
+      console.log('yess')
+      document.querySelector('strong').innerText = '0'
+      window.location.reload()
+    }
   }
 
   const toggleAllItems = (checkedValue) => {
