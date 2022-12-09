@@ -5,13 +5,13 @@ import { Footer } from './components/Footer'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [noneCompletedItemsCount, setNoneCompletedItemsCount] = useState(0)
+  let [todos, setTodos] = useState([])
+  let [noneCompletedItemsCount, setNoneCompletedItemsCount] = useState(0)
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((response) => response.json())
-      .then(setTodos)
+    // fetch('https://jsonplaceholder.typicode.com/todos')
+    //   .then((response) => response.json())
+    //   .then(setTodos)
   }, [])
 
   useEffect(() => {
