@@ -3,8 +3,13 @@
 export function ToDoList({ items, markAsCompleted, removeTodo, onToggleAll }) {
   //
   function HandleDestroyButton(event) {
-    event.target.parentElement.innerHTML = ''
+    let counter = document.querySelector('strong').innerText
+    // console.log(counter)
+    counter -= 1
+    document.querySelector('strong').innerText = counter
+    // console.log(counter)
     console.log(event.target.parentElement.innerHTML)
+    event.target.parentElement.innerHTML = ''
   }
   //
   const markAsCompleted1 = (event) => {
