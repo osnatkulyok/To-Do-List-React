@@ -17,7 +17,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const uncompleted = todos.filter((todo) => !todo.completed)
+    let uncompleted = todos.filter((todo) => !todo.completed)
     setNoneCompletedItemsCount(uncompleted.length)
   }, [todos])
 
@@ -56,9 +56,10 @@ function App() {
         }
       }
     }
-
+    //clear all completed tasks from todos
     todos = todos.filter((currentTodo) => !currentTodo.completed)
     // console.log(todos)
+    //update left items
     document.querySelector('strong').innerText = todos.length
   }
 
