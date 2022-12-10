@@ -1,20 +1,38 @@
 // import React from 'react'
 
-export function ToDoList({ items, markAsCompleted }) {
+export function ToDoList({ items, markAsCompleted, removeTodo, onToggleAll }) {
+  //
+  function HandleDestroyButton(event) {
+    event.target.parentElement.innerHTML = ''
+    console.log(event.target.parentElement.innerHTML)
+  }
+  //
+  const markAsCompleted1 = (event) => {
+    console.log('heyys')
+
+    const createCheckedAtt = document.createAttribute('checked')
+    event.target.setAttributeNode(createCheckedAtt)
+    console.log(event.target.target)
+    console.log()
+
+    // const createCheckedAtt = document.createAttribute('checked')
+    //     item.setAttributeNode(createCheckedAtt)
+    //     console.log('yay')
+  }
   return (
-    <ul class="todo-list">
+    <ul className="todo-list">
       {items.map((items) => (
-        <li className="">
-          <div class="view">
+        <li className="parent">
+          <div className="view">
             <input
-              onCheckBox={markAsCompleted}
-              class="toggle"
+              onClick={markAsCompleted1}
+              className="toggle"
               type="checkbox"
             />
-            <label>{items.title}</label>
-            <button class="destroy" />
+            <label className="lineTrough">{items.title}</label>
+            <button className="destroy" onClick={HandleDestroyButton} />
           </div>
-          <input class="edit" />
+          <input className="edit" />
         </li>
       ))}
     </ul>
