@@ -3,6 +3,7 @@ import { Header } from './components/Header'
 import { Main } from './components/Main'
 import { Footer } from './components/Footer'
 import { useEffect, useState } from 'react'
+// import { ToDoList } from './components/ToDoList '
 import { render } from '@testing-library/react'
 
 function App() {
@@ -28,22 +29,37 @@ function App() {
     // todos = [ ...todos, { id: Date.now(), title, completed: false } ]
   }
 
-  const removeTodo = (todoToRemove) => {
-    todos = todos.filter((currentTodo) => currentTodo.id !== todoToRemove.id)
-    console.log(todos)
-  }
+  // const removeTodo = (todoToRemove) => {
+  //   console.log('kokkk')
+  //   todos = todos.filter((currentTodo) => currentTodo.id !== todoToRemove.id)
+  // }
 
-  const markAsCompleted = () => {}
+  // const markAsCompleted = () => {
+  //   console.log('heyys')
+  //   console.log()
+  // const createCheckedAtt = document.createAttribute('checked')
+  //     item.setAttributeNode(createCheckedAtt)
+  //     console.log('yay')
 
   const clearAllCompletedItems = () => {
-    todos = todos.filter((currentTodo) => !currentTodo.completed)
-    console.log(todos)
+    const listItems = document.querySelectorAll('li')
+
     // console.log(todos)
-    if (todos.length == 0) {
-      console.log('yess')
-      document.querySelector('strong').innerText = '0'
-      window.location.reload()
+    ////for i in todos
+    for (let todo of todos) {
+      /////for i in list 'ul'
+      for (let li of listItems) {
+        if (todo.completed) {
+          if (todo.title === li.innerText) {
+            li.innerHTML = ''
+          }
+        }
+      }
     }
+
+    todos = todos.filter((currentTodo) => !currentTodo.completed)
+    // console.log(todos)
+    document.querySelector('strong').innerText = todos.length
   }
 
   const toggleAllItems = (checkedValue) => {
